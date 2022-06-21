@@ -8,6 +8,7 @@ const { validateName, validateAge, createTalker } = require('./middlewares/creat
 const { validateTalk, validateDate, validateRate } = require('./middlewares/talkValidation');
 const updateTalker = require('./middlewares/updateTalker');
 const deleteTalker = require('./middlewares/deleteTalker');
+const searchTalker = require('./middlewares/searchTalker');
 
 const app = express();
 app.use(bodyParser.json());
@@ -16,6 +17,7 @@ const HTTP_OK_STATUS = 200;
 const PORT = '3000';
 
 app.get('/talker', getTalker);
+app.get('/talker/search', tokenValidation, searchTalker);
 app.get('/talker/:id', getTalkerId);
 app.post('/login', validateEmail, validatePassword);
 app.post('/talker', 
